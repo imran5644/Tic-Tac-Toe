@@ -17,16 +17,16 @@ end
 
 def players_position(board, index)
   if board[index] == "" || board[index] == " " || board[index] == nil
-  return false
+    return false
   end
 end
 
 def players_turn(board)
   count = 0
   board.each do |spaces|
-  if spaces =="x" || spaces =="o"
-  count += 1
-  end
+    if spaces == "x" || spaces == "o"
+    count += 1
+    end
   end
   count
 end
@@ -52,9 +52,9 @@ while gameon do
   players_position(board, user_input_index(user_input))
   players_move(user_input_index(user_input), board, current_player(board))
   if user_input_index(user_input).between?(0, 8)
-  puts 'this is a valid move'
+    puts 'this is a valid move'
   else
-  puts 'this is not a valid move'
+    puts 'this is not a valid move'
   end
   counts += 1
   puts 'all positions filled'
@@ -66,6 +66,6 @@ puts 'do you want to play again'
 
 wanna_play = gets.chomp
 if wanna_play == 'no'
-    break 
+  break
 end
 end
