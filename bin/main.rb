@@ -16,23 +16,19 @@ def players_move(index, board, player)
 end
 
 def players_position(board, index)
-  if(board[index] == '' || board[index] == ' ' || board[index] == nil)
-    return false
-  end
+  return false if board[index] == '' || board[index] == ' ' || board[index].nil?
 end
 
 def players_turn(board)
   count = 0
   board.each do |spaces|
-    if spaces == 'x' || spaces == 'o'
-      count += 1
-    end
+    count += 1 if spaces.include?('x') || spaces.include?('o')
   end
   count
 end
 
 def current_player(board)
-  players_turn(board) % 2 == 0 ? "x" : "o"
+  players_turn(board).even? ? 'x' : 'o'
 end
 
 loop do
@@ -44,28 +40,26 @@ loop do
   puts board = [' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ']
   gameon = true
   counts = 0
-  while gameon do
+  while gameon
     puts "the game is playing by #{playerone} and #{playertwo}"
     game_board(board)
     puts 'On which position you want to play'
     user_input = gets.chomp
     players_position(board, user_input_index(user_input))
     players_move(user_input_index(user_input), board, current_player(board))
-      if user_input_index(user_input).between?(0, 8)
-        puts 'this is a valid move'
-      else
-        puts 'this is not a valid move'
-     end
-      counts += 1
-      puts 'all positions filled'
-      puts board = ['x ', ' o', 'x ', ' o', ' x', ' o', ' o', ' x', 'x ']
-      gameon = false if counts == 8
-      end
-      puts 'player1 win'
-      puts 'do you want to play again'
-
-      wanna_play = gets.chomp
-   if wanna_play == 'no'
-   break
+    if user_input_index(user_input).between?(0, 8)
+      puts 'this is a valid move'
+    else
+      puts 'this is not a valid move'
+    end
+    counts += 1
+    puts 'all positions filled'
+    puts board = ['x ', ' o', 'x ', ' o', ' x', ' o', ' o', ' x', 'x ']
+    gameon = false if counts == 8
   end
+  puts 'player1 win'
+  puts 'do you want to play again'
+
+  wanna_play = gets.chomp
+  break if wanna_play == 'no'
 end
