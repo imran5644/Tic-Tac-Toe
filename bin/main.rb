@@ -16,7 +16,7 @@ def players_move(index, board, player)
 end
 
 def players_position(board, index)
-  if board[index] == '' || board[index] == ' ' || board[index] == nil
+  if(board[index] == '' || board[index] == ' ' || board[index] == nil)
     return false
   end
 end
@@ -35,7 +35,7 @@ def current_player(board)
   players_turn(board) % 2 == 0 ? "x" : "o"
 end
 
-loop do  
+loop do
   puts 'Welcome to Tic Tac Toe Game'
   puts 'please enter the name of player1'
   playerone = gets.chomp
