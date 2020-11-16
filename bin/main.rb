@@ -7,7 +7,7 @@ playerone = gets.chomp
 puts 'please enter the name of player2'
 playertwo = gets.chomp
 
-puts "the game is playing by #{playerone} and #{playerteo}"
+puts "the game is playing by #{playerone} and #{playertwo}"
 
 puts board = [' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ']
 
