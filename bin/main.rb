@@ -14,7 +14,7 @@ loop do
     puts 'which player is playing'
     puts playerturn.to_s
     playerturn = playerturn == 'x' ? 'o' : 'x'
-    puts 'On which position you want to play'
+    puts 'On which position you want to play?'
     puts 'enter number between 1 and 9'
     user_input = gets.chomp
     puts "player chose #{user_input}"
