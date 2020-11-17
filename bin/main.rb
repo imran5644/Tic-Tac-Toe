@@ -1,60 +1,36 @@
 #!/usr/bin/env ruby
-def game_board(board)
-  puts "#{board[0]}|#{board[1]}|#{board[2]}"
-  puts '-------------------'
-  puts "#{board[3]}|#{board[4]}|#{board[5]}"
-  puts '--------------------'
-  puts "#{board[6]}| #{board[7]}|#{board[8]}"
-end
-
-def user_input_index(user_input)
-  user_input.to_i - 1
-end
-
-def players_move(index, board, player)
-  board[index] = player
-end
-
-def players_position(board, index)
-  return false if board[index] == '' || board[index] == ' ' || board[index].nil?
-end
-
-def players_turn(board)
-  count = 0
-  board.each do |spaces|
-    count += 1 if spaces.include?('x') || spaces.include?('o')
-  end
-  count
-end
-
-def current_player(board)
-  players_turn(board).even? ? 'x' : 'o'
-end
-
+# rubocop:disable Metrics/BlockLength
 loop do
   puts 'Welcome to Tic Tac Toe Game'
   puts 'please enter the name of player1'
   playerone = gets.chomp
   puts 'please enter the name of player2'
   playertwo = gets.chomp
-  puts board = [' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ']
   gameon = true
   counts = 0
+  playerturn = 'x'
   while gameon
     puts "the game is playing by #{playerone} and #{playertwo}"
-    game_board(board)
+    puts 'which player is playing'
+    puts playerturn.to_s
+    playerturn = playerturn == 'x' ? 'o' : 'x'
     puts 'On which position you want to play'
+    puts 'enter number between 1 and 9'
     user_input = gets.chomp
-    players_position(board, user_input_index(user_input))
-    players_move(user_input_index(user_input), board, current_player(board))
-    if user_input_index(user_input).between?(0, 8)
-      puts 'this is a valid move'
-    else
-      puts 'this is not a valid move'
-    end
+    puts "player chose #{user_input}"
+    puts 'this is not a valid move'
+    puts 'x|0|x'
+    puts '-------------------'
+    puts 'x|0|x'
+    puts '--------------------'
+    puts 'x|0|x'
     counts += 1
     puts 'all positions filled'
-    puts board = ['x ', ' o', 'x ', ' o', ' x', ' o', ' o', ' x', 'x ']
+    puts 'x|0|x'
+    puts '-------------------'
+    puts 'x|0|x'
+    puts '--------------------'
+    puts 'x|0|x'
     gameon = false if counts == 8
   end
   puts 'player1 win'
@@ -63,3 +39,4 @@ loop do
   wanna_play = gets.chomp
   break if wanna_play == 'no'
 end
+# rubocop:enable Metrics/BlockLength
