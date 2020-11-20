@@ -1,5 +1,8 @@
 #!/usr/bin/env ruby
 # rubocop:disable Metrics/BlockLength
+# rubocop:disable Metrics/AbcSize
+# rubocop:disable Metrics/CyclomaticComplexity
+# rubocop:disable Metrics/PerceivedComplexity
 def game_board(board)
   puts "#{board[0]}|#{board[1]}|#{board[2]}"
   puts '-------------------'
@@ -17,7 +20,7 @@ def players_move(index, board, player)
 end
 
 def players_position(board, index)
-  if (board[index] == ' ') || (board[index] == '') || board[index].nil?
+  if board[index].to_i.is_a? Numeric
     false
   else
     true
@@ -41,26 +44,20 @@ def valid_move?(board, index)
 end
 
 def won?(board, current_player)
-  return board[0] == board[3] && board[3] == board[6] && current_player == board[0]
-  return board[1] == board[4] && board[4] == board[7] && current_player == board[1]
-  return board[2] == board[5] && board[5] == board[8] && current_player == board[2]
-  return board[0] == board[4] && board[4] == board[8] && current_player == board[0]
-  return board[2] == board[4] && board[4] == board[6] && current_player == board[2]
-  return board[0] == board[1] && board[1] == board[2] && current_player == board[0]
-  return board[3] == board[4] && board[4] == board[5] && current_player == board[3]
-  return board[6] == board[7] && board[7] == board[8] && current_player == board[6]
-  false
+  win1 = board[0] == board[3] && board[3] == board[6] && current_player == board[0]
+  win2 = board[1] == board[4] && board[4] == board[7] && current_player == board[1]
+  win3 = board[2] == board[5] && board[5] == board[8] && current_player == board[2]
+  win4 = board[0] == board[4] && board[4] == board[8] && current_player == board[0]
+  win5 = board[2] == board[4] && board[4] == board[6] && current_player == board[2]
+  win6 = board[0] == board[1] && board[1] == board[2] && current_player == board[0]
+  win7 = board[3] == board[4] && board[4] == board[5] && current_player == board[3]
+  win8 = board[6] == board[7] && board[7] == board[8] && current_player == board[6]
+
+  true if win1 || win2 || win3 || win4 || win5 || win6 || win7 || win8
 end
 
 def draw?(board)
-  if !won?(board) && full?(board)
-    true
-  elsif !won?(board) && !full?(board)
-    false
-  else
-    won?(board)
-    false
-  end
+  board.all?(String)
 end
 
 loop do
@@ -72,8 +69,8 @@ loop do
   gameon = true
   counts = 0
   playerturn = 'x'
-  puts board = [' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ']
-
+  board = [ 1, 2, 3, 4, 5, 6 , 7, 8, 9]
+  game_board(board)
   while gameon
     puts "the game is playing by #{playerone} and #{playertwo}"
     puts 'which player is playing'
@@ -87,9 +84,9 @@ loop do
       puts 'this is not a valid move'
     else
       puts 'this is a valid move'
+      counts += 1
       players_move(user_input_index(user_input), board, playerturn)
-      # playerturn =='x'? playerturn = 'o': playerturn = 'x'
-      break if won?(board, playerturn)
+      break if won?(board, playerturn) || draw?(board)
 
       if playerturn == 'x'
         puts playertwo.to_s
@@ -98,19 +95,20 @@ loop do
         puts playerone.to_s
         playerturn = 'x'
       end
-      counts += 1
+    
     end
     game_board(board)
-
-    puts 'all positions filled'
-    game_board(board)
-    gameon = false if counts == 8
+    gameon = false if counts == 9
   end
   game_board(board)
-  puts "#{playerturn} won "
+  puts "#{playerturn} won " if won?(board, playerturn)
+  puts 'all positions filled and it\'s a drraw' if draw?(board)
   puts 'do you want to play again'
 
   wanna_play = gets.chomp
   break if wanna_play == 'no'
 end
 # rubocop:enable Metrics/BlockLength
+# rubocop:enable Metrics/AbcSize
+# rubocop:enable Metrics/CyclomaticComplexity
+# rubocop:enable Metrics/PerceivedComplexity
