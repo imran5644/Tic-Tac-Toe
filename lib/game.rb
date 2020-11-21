@@ -11,12 +11,12 @@ class Tictactoe
     message
   end
 
-  def user_input_index(user_input)
-    user_input.to_i - 1
-  end
-
   def players_move(index, board, player)
     board[user_input_index(index)] = player
+  end
+
+  def user_input_index(user_input)
+    user_input.to_i - 1
   end
 
   def players_position(board, index)
@@ -27,18 +27,6 @@ class Tictactoe
     else
       true
     end
-  end
-
-  def players_turn(board)
-    count = 0
-    board.each do |spaces|
-      count += 1 if spaces.include?('x') || spaces.include?('o')
-    end
-    count
-  end
-
-  def current_player(board)
-    players_turn(board).even? ? 'x' : 'o'
   end
 
   def valid_move?(board, index)
