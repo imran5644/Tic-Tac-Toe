@@ -7,7 +7,7 @@ class Tictactoe
     message += "-------------------\n"
     message += "#{board[3]}|#{board[4]}|#{board[5]}\n"
     message += "--------------------\n"
-    message += "#{board[6]}| #{board[7]}|#{board[8]}"
+    message += "#{board[6]}|#{board[7]}|#{board[8]}"
     message
   end
 
