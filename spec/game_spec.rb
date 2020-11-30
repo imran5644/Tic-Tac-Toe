@@ -1,7 +1,5 @@
-# require_relative '../bin/main.rb'
 require_relative '../lib/game'
 
-# game.rb
 describe Tictactoe do
   let!(:game) { Tictactoe.new }
   let!(:board_clean) { [1, 2, 3, 4, 5, 6, 7, 8, 9] }
@@ -63,4 +61,3 @@ describe Tictactoe do
     end
   end
 end
-

@@ -10,9 +10,11 @@
 
 - Ruby
 - Rubocop
+- RSpec
 
 ## Getting Started
--Should have ruby installed 
+
+- Should have ruby installed 
 
 ### Prerequisites
 
@@ -40,6 +42,18 @@
 - Each player has a "X" or "O" Token
 - once a player get 3 marks on a row he/she is the winner
 - If all 9 cells are occupied but none of the players got 3 marks in a row is a draft
+
+### Run tests
+
+To run tests you need to have RSpec installed
+```
+gem install rspec
+```
+
+Go into the project's root directory and execute RSpec to run the tests
+```
+rspec
+```
 
 ## Authors
 
