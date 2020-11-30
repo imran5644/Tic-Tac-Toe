@@ -98,38 +98,3 @@ RSpec.configure do |config|
   Kernel.srand config.seed
 =end
 end
-
-require_relative '../lib/game'
-require_relative '../lib/players'
-game = Tictactoe.new
-players = Player.new
-  
-describe "Tictactoe" do
-  describe "game_board" do
-   it "return a valid board" do
-    board = [1, 2, 3, 4, 5, 6, 7, 8, 9]
-    expect(game.game_board(board)).to eql ("1|2|3\n-------------------\n4|5|6\n--------------------\n7|8|9")
-   end
-  end
-
-  describe "user_input_index" do
-    it "it will give the board index" do
-      user_input = 2
-      expect(game.user_input_index(user_input)).to eql (1)
-    end
-  end
-
-  # describe "players_move" do
-  #   it "it will display player move on the board" do
-  #     board[user_input_index(index)] = player
-  #     expect(game.players_move(index, board, player)).to eql ()
-  #   end
-  # end
-
-  # describe "players_position" do
-  #   it "it will display player position on the board" do
-  #     index = 'x'
-  #     expect(game.players_position(board, index)).to eql ('x')
-  #   end
-  # end
-end
