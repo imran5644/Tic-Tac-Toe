@@ -1,6 +1,5 @@
 # require_relative '../bin/main.rb'
 require_relative '../lib/game'
-require_relative '../lib/players'
 
 # game.rb
 describe Tictactoe do
@@ -65,4 +64,3 @@ describe Tictactoe do
   end
 end
 
-# players.rb
