@@ -19,10 +19,10 @@ describe Player do
     end
   end
 
- describe '#player_switch' do
-   it 'returns the opposite player' do
-     @playerturn = 'o'
-     expect(player.player_switch). to eql('x')
-   end
- end
+  describe '#player_switch' do
+    it 'returns the opposite player' do
+      @playerturn = 'o'
+      expect(player.player_switch).to eql('x')
+    end
+  end
 end
