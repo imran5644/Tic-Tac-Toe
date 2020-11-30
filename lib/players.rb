@@ -5,7 +5,7 @@ class Player
   def players_turn(board)
     count = 0
     board.each do |spaces|
-      count += 1 if spaces.include?('x') || spaces.include?('o')
+      count += 1 if spaces.to_s.include?('x') || spaces.to_s.include?('o')
     end
     count
   end
