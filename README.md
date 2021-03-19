@@ -1,6 +1,8 @@
 ![](https://img.shields.io/badge/Microverse-blueviolet)
 
 # Tic Tac Toe
+> A game in which two players take turns putting circles and crosses on a 3x3 grid 
+> and try to get three of the same symbols following the game rules.
 
 > A command line game built in ruby
 
